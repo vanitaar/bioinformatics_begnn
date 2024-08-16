@@ -69,4 +69,6 @@ def FrequentWords(Text, k):
 
 print(FrequentWords("ACGTTGCATGTCGCATGATGCATGAGAGCT", 4)) # Output: ['CATG', 'GCAT']
 
-
+# Text in reference to previously defined oriC of Vibrio cholerae (line 13)
+k = 10
+print(FrequentWords(Text, k)) # Output: ['CTCTTGATCA', 'TCTTGATCAT']

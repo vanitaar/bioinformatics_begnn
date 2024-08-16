@@ -94,3 +94,8 @@ def Reverse(Pattern):
 
 print(Reverse('AAAACCCGGT')) # Output: "TGGCCCAAAA"
 
+# using slice https://stackoverflow.com/questions/509211/how-slicing-in-python-works
+def Reverse2(Pattern):
+    return Pattern[::-1]
+
+print(Reverse2('AAAACCCGGT')) # Output: "TGGCCCAAAA"

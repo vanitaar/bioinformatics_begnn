@@ -109,3 +109,10 @@ def Complement(Pattern):
 
 print(Complement("AAAACCCGGT")) # Output: "TTTTGGGCCA"
 
+# using list comprehension to optimize
+def Complement2(Pattern):
+    nucleotide_complements = {"A": "T", "T": "A", "G": "C", "C": "G"}
+    complement = "".join(nucleotide_complements[nuc] for nuc in Pattern)
+    return complement
+
+print(Complement2("AAAACCCGGT")) # Output: "TTTTGGGCCA"

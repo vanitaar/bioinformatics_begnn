@@ -116,3 +116,23 @@ def Complement2(Pattern):
     return complement
 
 print(Complement2("AAAACCCGGT")) # Output: "TTTTGGGCCA"
+
+# putting it all together
+
+def ReverseComplement(Pattern):
+    Pattern = Reverse2(Pattern) # reverse all letters in a string
+    Pattern = Complement2(Pattern) # complement each letter in a string
+    return Pattern
+
+print(ReverseComplement("AAAACCCGGT")) # Output: "ACCGGGTTTT"
+# http://bioinformaticsalgorithms.com/data/testdatasets/week1/05%20-%20ReverseComplement.txt
+
+
+# these are 4 most freq 9-mers in oriC of VC
+# first 2 are rev complements of each other
+print(ReverseComplement("ATGATCAAG")) # CTTGATCAT
+print(ReverseComplement("CTTGATCAT")) # ATGATCAAG
+print(ReverseComplement("TCTTGATCA")) # TGATCAAGA
+print(ReverseComplement("CTCTTGATC")) # GATCAAGAG
+
+# also recall importance of ATG in start code??

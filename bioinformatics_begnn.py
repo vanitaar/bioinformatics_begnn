@@ -85,3 +85,12 @@ print(FrequentWords(Text, k))
 #     Pattern = Complement(Pattern) # complement each letter in a string
 #     return Pattern
 
+def Reverse(Pattern):
+    rev = "" # initialize empty str
+    # loop through pattern for len + 1 (as range 2nd arg is exclusive)
+    for i in range(1, len(Pattern) + 1):
+        rev += Pattern[-i] # 0 1 2 3 --> -1 -2 -3 -4 
+    return rev
+
+print(Reverse('AAAACCCGGT')) # Output: "TGGCCCAAAA"
+

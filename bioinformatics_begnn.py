@@ -7,7 +7,7 @@ def PatternCount(Text, Pattern):
             count = count+1
     return count 
 
-print(PatternCount("GCGCG", "GCG"))
+print(PatternCount("GCGCG", "GCG")) # Output: 2
 
 # oriC of Vibrio cholerae
 Text = "ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
@@ -32,6 +32,8 @@ print(PatternCount(Text, Pattern)) # Output: 8
 #         freq[Pattern] = 0
 #     return freq
 
+# TO SOLVE THE FREQUENT WORDS PROBLEM
+
 # completed FreqMap function:
 def FrequencyMap(Text, k):
     freq = {}
@@ -49,3 +51,22 @@ def FrequencyMap(Text, k):
 # First Loop: This loop initializes the dictionary freq with all possible k-mers from the text, setting their counts to 0. It ensures that every k-mer is included in the dictionary, even if it doesn’t appear in the text.
 # Second Loop: This loop actually counts the occurrences of each k-mer. It iterates over the text again, and for each k-mer, it increments its count in the freq dictionary.
 # Without the second loop, the dictionary would only contain k-mers with a count of 0, as the first loop only initializes the dictionary but doesn’t count the occurrences.
+
+
+# Input:  A string Text and an integer k
+# Output: A list containing all most frequent k-mers in Text
+def FrequentWords(Text, k):
+    words = []
+    freq = FrequencyMap(Text, k)
+    m = max(freq.values())
+    for key in freq:
+      # add each key to words whose corresponding frequency value is equal to m
+        if freq[key] == m:
+            words.append(key)
+    return sorted(words)
+
+# https://bioinformaticsalgorithms.com/data/testdatasets/week1/04%20-%20FrequentWordsNoDuplicates.txt
+
+print(FrequentWords("ACGTTGCATGTCGCATGATGCATGAGAGCT", 4)) # Output: ['CATG', 'GCAT']
+
+

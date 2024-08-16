@@ -99,3 +99,13 @@ def Reverse2(Pattern):
     return Pattern[::-1]
 
 print(Reverse2('AAAACCCGGT')) # Output: "TGGCCCAAAA"
+
+def Complement(Pattern):
+    nucleotide_complements = {"A": "T", "T": "A", "G": "C", "C": "G"}
+    complement = ""
+    for nuc in Pattern:
+        complement += nucleotide_complements[nuc]
+    return complement
+
+print(Complement("AAAACCCGGT")) # Output: "TTTTGGGCCA"
+

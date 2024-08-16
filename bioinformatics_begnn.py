@@ -75,3 +75,13 @@ print(FrequentWords(Text, k))
 # Output: k=10 ['CTCTTGATCA', 'TCTTGATCAT']
 # Output: k=3 ['TGA']
 
+# TO SOLVE THE REVERSE COMPLEMENT PROBLEM: Find the reverse complement of a DNA string.
+    #  Input: A DNA string Pattern.
+    #  Output: The reverse complement of Pattern.
+    
+# "highest-level" function:
+# def ReverseComplement(Pattern):
+#     Pattern = Reverse(Pattern) # reverse all letters in a string
+#     Pattern = Complement(Pattern) # complement each letter in a string
+#     return Pattern
+

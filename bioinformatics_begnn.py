@@ -152,4 +152,9 @@ def PatternMatching(Pattern, Genome):
     return positions
 
 
+# or using list comprehension
+def PatternMatching2(Pattern, Genome):
+    return [idx for idx in range(len(Genome) - len(Pattern) + 1) if Genome[idx:idx+len(Pattern)] == Pattern]
+
 print(PatternMatching("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]
+print(PatternMatching2("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]

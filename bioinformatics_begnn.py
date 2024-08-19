@@ -160,4 +160,26 @@ print(PatternMatching("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]
 print(PatternMatching2("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]
 
 # applying to Vibrio Cholera genome https://bioinformaticsalgorithms.com/data/realdatasets/Replication/Vibrio_cholerae.txt
-# Pattern = "CTTGATCAT" --> positions = [60039, 98409, 129189, 152283, 152354, 152411, 163207, 197028, 200160, 357976, 376771, 392723, 532935, 600085, 622755, 1065555]
+# Pattern = "CTTGATCAT" --> positions = [60039, 98409, 129189, **152283, 152354, 152411**, 163207, 197028, 200160, 357976, 376771, 392723, 532935, 600085, 622755, 1065555]
+# Pattern = "ATGATCAAG" --> [116556, 149355, **151913, 152013, 152394**, 186189, 194276, 200076, 224527,
+#307692, 479770, 610980, 653338, 679985, 768828, 878903, 985368]
+
+# ori region of Thermotoga petrophil
+# https://bioinformaticsalgorithms.com/data/realdatasets/Replication/t_petrophila_oriC.txt
+
+Text_T_Petrophil_ori = \
+"AACTCTATACCTCCTTTTTGTCGAATTTGTGTGATTTATAGAGAAAATCTTATTAACTGAAACTAAAATGGTAGGTTTGGTGGTAGGTTTTGTGTACATTTTGTAGTATCTGATTTTTAATTACATACCGTATATTGTATTAAATTGACGAACAATTGCATGGAATTGAATATATGCAAAACAAACCTACCACCAAACTCTGTATTGACCATTTTAGGACAACTTCAGGGTGGTAGGTTTCTGAAGCTCTCATCAATAGACTATTTTAGTCTTTACAAACAATATTACCGTTCAGATTCAAGATTCTACAACGCTGTTTTAATGGGCGTTGCAGAAAACTTACCACCTAAAATCCAGTATCCAAGCCGATTTCAGAGAAACCTACCACTTACCTACCACTTACCTACCACCCGGGTGGTAAGTTGCAGACATTATTAAAAACCTCATCAGAAGCTTGTTCAAAAATTTCAATACTCGAAACCTACCACCTGCGTCCCCTATTATTTACTACTACTAATAATAGCAGTATAATTGATCTGA"
+
+count_1 = PatternCount(Text_T_Petrophil_ori, "ATGATCAAG")
+count_2 = PatternCount(Text_T_Petrophil_ori, "CTTGATCAT")
+
+print(count_1) # 0
+print(count_2) # 0
+print(count_1 + count_2) # 0
+# to confirm:
+print(PatternMatching("ATGATCAAG", Text_T_Petrophil_ori)) # []
+
+#This region does not contain a single occurrence of "ATGATCAAG" or "CTTGATCAT"! Thus, different bacteria may use different DnaA boxes as “hidden messages” to the DnaA protein.
+
+print(FrequentWords(Text_T_Petrophil_ori, 9))
+print(FrequencyMap(Text_T_Petrophil_ori, 9))

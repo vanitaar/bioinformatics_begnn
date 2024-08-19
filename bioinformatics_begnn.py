@@ -136,3 +136,20 @@ print(ReverseComplement("TCTTGATCA")) # TGATCAAGA
 print(ReverseComplement("CTCTTGATC")) # GATCAAGAG
 
 # also recall importance of ATG in start code??
+
+# taking ATGATCAAG as the DnaA box, we need to check for other occurrences of this string pattern
+# there maybe these repeats occurring throughtout the VC genome, rather than just in the ori region
+
+# the Pattern Matching Problem
+#http://bioinformaticsalgorithms.com/data/testdatasets/week1/06%20-%20PatternMatching.txt
+
+def PatternMatching(Pattern, Genome):
+    positions = [] # to contain starting positions of where string patern matched
+    for i in range(len(Genome)-len(Pattern)+1):
+        if Genome[i:i+len(Pattern)] == Pattern:
+            positions.append(i)
+            
+    return positions
+
+
+print(PatternMatching("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]

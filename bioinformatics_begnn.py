@@ -158,3 +158,6 @@ def PatternMatching2(Pattern, Genome):
 
 print(PatternMatching("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]
 print(PatternMatching2("ATAT", "GATATATGCATATACTT")) # [1, 3 , 9]
+
+# applying to Vibrio Cholera genome https://bioinformaticsalgorithms.com/data/realdatasets/Replication/Vibrio_cholerae.txt
+# Pattern = "CTTGATCAT" --> positions = [60039, 98409, 129189, 152283, 152354, 152411, 163207, 197028, 200160, 357976, 376771, 392723, 532935, 600085, 622755, 1065555]

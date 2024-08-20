@@ -183,3 +183,14 @@ print(PatternMatching("ATGATCAAG", Text_T_Petrophil_ori)) # []
 
 print(FrequentWords(Text_T_Petrophil_ori, 9))
 print(FrequencyMap(Text_T_Petrophil_ori, 9))
+
+
+# Quiz 1
+print(PatternCount("AAA", "GACCATCAAAACTGATAAACTACTTAAAAATCAGT")) # 0
+print(PatternCount("GACCATCAAAACTGATAAACTACTTAAAAATCAGT", "AAA")) # 6
+print(ReverseComplement("GCTAGCT")) # "AGCTAGC"
+print(FrequentWords("CGCCTAAATAGCCTCGCGGAGCCTTATGTCATACTCGTCCT", 3)) #CCT
+
+print(PatternCount("GACCATCAAAACTGATAAACTACTTAAAAATCAGT", "AAA")) # 6
+print(FrequentWords("CGGAGGACTCTAGGTAACGCTTATCAGGTCCATAGGACATTCA", 3)) # AGG
+print(ReverseComplement("TTGTGTC")) # GACACAA

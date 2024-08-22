@@ -129,3 +129,13 @@ example_genome2 = "GAGCCACCGCGATA"
 skew_array2 = ComputeSkewArray(example_genome2)
 print(skew_array2) # [0, 1, 1, 2, 1, 0, 0, -1, -2, -1, -2, -1, -1, -1, -1]
 print(" ".join(map(str, skew_array2))) # 0 1 1 2 1 0 0 -1 -2 -1 -2 -1 -1 -1 -1
+
+# optimized skew array fn
+def SkewArray(Genome):
+    skew = [0]  # Initialize skew with 0
+    for i in Genome:
+        skew.append(skew[-1] - 1 if i == 'C' else (skew[-1] + 1 if i == 'G' else skew[-1]))
+    return " ".join(map(str, skew))
+
+print(SkewArray("CATGGGCATCGGCCATACGCC"))
+print(SkewArray("GAGCCACCGCGATA"))

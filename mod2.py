@@ -179,9 +179,39 @@ def HammingDistance(p, q):
                 hamming_dist += 1
         return hamming_dist
     
+# http://bioinformaticsalgorithms.com/data/testdatasets/week2/05%20-%20HammingDistance.txt
 print(HammingDistance("GGGCCGTTGGT", "GGACCGTTGAC"))  # 3
 
 # using zip
     # for pi, qi in zip(p, q):
     #     if pi != qi:
     #         hamming_dist += 1
+
+# Approximate Pattern Matching Problem
+#  Input: Strings Pattern and Text along with an integer d.
+#  Output: All starting positions where Pattern appears as a substring of Text with at most d mismatches.
+# Given PatternMatching in mod1.py, define an approximate pattern matching fn to 
+# Find all approximate occurrences of a pattern in a string.
+    
+def ApproximatePatternMatching(Pattern, Text, d):
+    positions = []  # Initialize list to hold positions
+    k = len(Pattern)
+    for i in range(len(Text) - k + 1):
+        if HammingDistance(Pattern, Text[i:i+k]) <= d:
+            positions.append(i)
+    return positions
+
+# http://bioinformaticsalgorithms.com/data/testdatasets/week2/06%20-%20ApproximatePatternMatching.txt
+
+Pattern = "ATTCTGGA"
+Text = "CGCCCGAATCCAGAACGCATTCCCATATTTCGGGACCACTGGCCTCCACGGTACGGACGTCAATCAAAT"
+d = 3
+
+print(ApproximatePatternMatching(Pattern, Text, d)) # [6, 7, 26, 27]
+
+# using list comprehension
+def ApproximatePatternMatching2(Pattern, Text, d):
+    k = len(Pattern)
+    return [i for i in range(len(Text) - k + 1) if HammingDistance(Pattern, Text[i:i+k]) <= d]
+
+print(ApproximatePatternMatching2(Pattern, Text, d))

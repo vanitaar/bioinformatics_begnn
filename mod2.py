@@ -81,3 +81,24 @@ key_count = len(list(faster_result.keys()))
 print(key_count) # 4639675
 
 print(len(faster_result)) # 4639675
+
+def FasterSymbolArray2(Genome, symbol):
+    array = {}
+    n = len(Genome)
+    half_n = n // 2
+    ExtendedGenome = Genome + Genome[:half_n]
+
+    # Initialize array with zeros
+    current_count = sum(1 for i in range(half_n) if ExtendedGenome[i] == symbol)
+
+    for i in range(n):
+        array[i] = current_count
+        if ExtendedGenome[i] == symbol:
+            current_count -= 1
+        if ExtendedGenome[i + half_n] == symbol:
+            current_count += 1
+
+    return array
+
+
+print(FasterSymbolArray2("AAAAGGGG", "A"))

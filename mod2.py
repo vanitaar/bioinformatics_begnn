@@ -1,3 +1,4 @@
+import urllib.request as req
 
 def PatternCount(Text, Pattern):
     count = 0
@@ -18,3 +19,15 @@ def SymbolArray(Genome, symbol):
 print(SymbolArray("AAAAGGGG", "A"))
 # Output should be {0: 4, 1: 3, 2: 2, 3: 1, 4: 0, 5: 1, 6: 2, 7: 3}
 
+# Try on E. coli genome
+
+# Fetch genome data
+url = "https://bioinformaticsalgorithms.com/data/realdatasets/Replication/E_coli.txt"
+with req.urlopen(url) as response:
+    ecoli_genome = response.read().decode('utf-8').strip()  # remove any leading/trailing whitespace
+
+# Pass the genome to the SymbolArray function
+result = SymbolArray(ecoli_genome, "C")
+
+print(result) #very slow for long genome   
+print(ecoli_genome)

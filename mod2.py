@@ -67,7 +67,7 @@ def FasterSymbolArray(Genome, symbol):
     return array
 
 # http://bioinformaticsalgorithms.com/data/testdatasets/week2/02%20-%20FasterSymbolArray.txt
-print(FasterSymbolArray("AAAAGGGG", "A"))
+# print(FasterSymbolArray("AAAAGGGG", "A"))
 
 # Fetch genome data
 url = "https://bioinformaticsalgorithms.com/data/realdatasets/Replication/E_coli.txt"
@@ -80,7 +80,7 @@ faster_result = FasterSymbolArray(ecoli_genome, "C")
 key_count = len(list(faster_result.keys()))
 print(key_count) # 4639675
 
-print(len(faster_result)) # 4639675
+# print(len(faster_result)) # 4639675
 
 def FasterSymbolArray2(Genome, symbol):
     array = {}
@@ -101,4 +101,31 @@ def FasterSymbolArray2(Genome, symbol):
     return array
 
 
-print(FasterSymbolArray2("AAAAGGGG", "A"))
+# print(FasterSymbolArray2("AAAAGGGG", "A"))
+
+
+# Skew Array
+
+def ComputeSkewArray(Genome):
+    Skew = [0]  # Initialize the skew array with Skew[0] = 0
+# note: Skew[-1] --> in ref to the last element of array
+# no need to explicitly keep track of index separately    
+    for nuc in Genome:
+        if nuc == "G":
+            Skew.append(Skew[-1] + 1)
+        elif nuc == "C":
+            Skew.append(Skew[-1] - 1)
+        # nuc == "A" or "T" --> will append last value
+        else:
+            Skew.append(Skew[-1])
+    return Skew
+
+example_genome = "CATGGGCATCGGCCATACGCC"
+skew_array = ComputeSkewArray(example_genome)
+print(skew_array) # [0, -1, -1, -1, 0, 1, 2, 1, 1, 1, 0, 1, 2, 1, 0, 0, 0, 0, -1, 0, -1, -2]
+print(" ".join(map(str, skew_array))) # 0 -1 -1 -1 0 1 2 1 1 1 0 1 2 1 0 0 0 0 -1 0 -1 -2
+
+example_genome2 = "GAGCCACCGCGATA"
+skew_array2 = ComputeSkewArray(example_genome2)
+print(skew_array2) # [0, 1, 1, 2, 1, 0, 0, -1, -2, -1, -2, -1, -1, -1, -1]
+print(" ".join(map(str, skew_array2))) # 0 1 1 2 1 0 0 -1 -2 -1 -2 -1 -1 -1 -1

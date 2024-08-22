@@ -150,7 +150,7 @@ def MinimumSkew(Genome):
     # find the minimum value of all values in the skew array
     min_value = min(skew_arr)
     # range over the length of the skew array and add all positions achieving the min to positions
-    for i in range(len(skew_arr)):
+    for i in range(len(skew_arr)): # alt : use enumerate?
         if skew_arr[i] == min_value:
             positions.append(i)
     
@@ -159,3 +159,29 @@ def MinimumSkew(Genome):
 # http://bioinformaticsalgorithms.com/data/testdatasets/week2/04%20-%20MinimumSkew.txt
 
 print(MinimumSkew("TAAAGACTGCCGAGAGGCCAACACGAGTGCTAGAACGAGGGGCGTAAACGCGGGTCCGAT")) # [11, 24]
+
+
+# Hamming Distance Problem
+"""
+We say that position i in k-mers p and q is a mismatch 
+if the symbols at position i of the two strings are not the same. 
+The **TOTAL NUMBER OF MISMATCHES** between strings p and q is called the Hamming distance between these strings. 
+Implement a function to compute this distance, called HammingDistance(p, q)
+"""
+
+def HammingDistance(p, q):
+    hamming_dist = 0 # initialize
+    if len(p) != len(q):
+        return "Strings not of equal length"
+    else:
+        for i in range(len(p)):
+            if p[i] != q[i]:
+                hamming_dist += 1
+        return hamming_dist
+    
+print(HammingDistance("GGGCCGTTGGT", "GGACCGTTGAC"))  # 3
+
+# using zip
+    # for pi, qi in zip(p, q):
+    #     if pi != qi:
+    #         hamming_dist += 1

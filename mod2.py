@@ -214,4 +214,27 @@ def ApproximatePatternMatching2(Pattern, Text, d):
     k = len(Pattern)
     return [i for i in range(len(Text) - k + 1) if HammingDistance(Pattern, Text[i:i+k]) <= d]
 
-print(ApproximatePatternMatching2(Pattern, Text, d))
+print(ApproximatePatternMatching2(Pattern, Text, d))  # [6, 7, 26, 27]
+
+# Implement the ApproximatePatternCount function
+# modify the previous algorithm for the Frequent Words Problem in order to find DnaA boxes 
+# by identifying frequent k-mers, possibly with mismatches. 
+# Given input strings Text and Pattern as well as an integer d, 
+# extend the definition of PatternCount to the function ApproximatePatternCount(Pattern, Text, d). 
+# This function computes the number of occurrences of Pattern in Text with at most d mismatches. 
+
+# Input:  Strings Pattern and Text, and an integer d
+# Output: The number of times Pattern appears in Text with at most d mismatches
+
+def ApproximatePatternCount(Pattern, Text, d):
+    count = 0
+    for i in range(len(Text)-len(Pattern)+1):
+        if HammingDistance(Pattern, Text[i:i+len(Pattern)]) <= d:
+        # if Text[i:i+len(Pattern)] == Pattern:
+            count = count+1
+    return count 
+
+print(ApproximatePatternMatching("GAGG", "TTTAGAGCCTTCAGAGG", 2)) # [2, 4, 11, 13]
+print(ApproximatePatternCount("GAGG", "TTTAGAGCCTTCAGAGG", 2)) # 4
+
+# ---> Count is just len(positions) from Matching !!

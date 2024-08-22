@@ -135,7 +135,27 @@ def SkewArray(Genome):
     skew = [0]  # Initialize skew with 0
     for i in Genome:
         skew.append(skew[-1] - 1 if i == 'C' else (skew[-1] + 1 if i == 'G' else skew[-1]))
+    # return skew --> get in list
     return " ".join(map(str, skew))
 
 print(SkewArray("CATGGGCATCGGCCATACGCC"))
 print(SkewArray("GAGCCACCGCGATA"))
+
+# Minimum Skew Problem: Find a position in a genome where the skew diagram attains a minimum. --> indicative of approx position of ori
+def MinimumSkew(Genome):
+    # generate an empty list positions
+    positions = []
+    # set a variable equal to SkewArray(Genome)
+    skew_arr = ComputeSkewArray(Genome)
+    # find the minimum value of all values in the skew array
+    min_value = min(skew_arr)
+    # range over the length of the skew array and add all positions achieving the min to positions
+    for i in range(len(skew_arr)):
+        if skew_arr[i] == min_value:
+            positions.append(i)
+    
+    return positions
+
+# http://bioinformaticsalgorithms.com/data/testdatasets/week2/04%20-%20MinimumSkew.txt
+
+print(MinimumSkew("TAAAGACTGCCGAGAGGCCAACACGAGTGCTAGAACGAGGGGCGTAAACGCGGGTCCGAT")) # [11, 24]
